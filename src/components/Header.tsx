@@ -9,12 +9,13 @@ import R from "../assets/R-icon.jpg";
 import R2 from "../assets/R2-icon.jpg";
 import logo from "../assets/logo-banco-sangre.jpg";
 import { Link } from "react-router-dom";
+import { Nav } from "./Nav";
 
 export const Header = () => {
-  const [isNavOpen, setIsNavOpen] = useState(false); 
+  const [isNavOpen, setIsNavOpen] = useState(false);
 
   const toggleNav = () => {
-    setIsNavOpen(!isNavOpen); 
+    setIsNavOpen(!isNavOpen);
   };
 
   const navItems = [
@@ -66,12 +67,12 @@ export const Header = () => {
               <input
                 type="search"
                 placeholder="Buscar..."
-                className="pl-5 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 bg-white hidden md:block"
+                className="pl-5 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 bg-white"
                 aria-label="Buscar"
               />
             </div>
 
-            <div className="block md:block lg:hidden text-2xl text-white">
+            <div className="block md:hidden text-2xl text-white">
               <button onClick={toggleNav}>
                 <FontAwesomeIcon icon={faBars} />
               </button>
@@ -80,7 +81,7 @@ export const Header = () => {
         </div>
 
         {isNavOpen && (
-          <div className="lg:hidden absolute top-25 left-0 w-full bg-[#F4313F] text-white py-4 px-5">
+          <div className="absolute top-25 left-0 w-full bg-[#F4313F] text-white py-4 px-5 md:hidden">
             <ul className="flex flex-col gap-3">
               {navItems.map((item, index) => (
                 <li key={index}>
@@ -96,6 +97,10 @@ export const Header = () => {
             </ul>
           </div>
         )}
+
+        <div className="hidden md:block">
+          <Nav />
+        </div>
       </div>
     </>
   );
